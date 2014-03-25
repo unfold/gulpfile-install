@@ -2,7 +2,7 @@
 > Gulpfile-install is a command line application that scans your gulpfile.js and install all dependencies.
 
 ## Example
-If your starting a new project and want to reuse your previous gulpfile:
+If you're starting a new project and want to reuse your previous gulpfile:
 ```
 $ mkdir new-project
 $ cp previous-project/gulpfile.js new-project
