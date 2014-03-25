@@ -1,0 +1,17 @@
+{
+  "name": "gulpfile-install",
+  "version": "0.0.1",
+  "description": "Installs all module requirements in a gulpfile",
+  "bin": {
+    "gulpfile-install": "bin/gulpfile-install.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/unfold/gulpfile-install.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Einar Löve <einar.love@gmail.com>",
+  "license": "ISC"
+}
