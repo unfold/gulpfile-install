@@ -1,6 +1,6 @@
 {
   "name": "gulpfile-install",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Installs all module requirements in a gulpfile",
   "bin": {
     "gulpfile-install": "bin/gulpfile-install.js"
