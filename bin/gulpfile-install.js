@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // TODO: Optimize regex to match only one group
-// Matches both 'require(..)' and whats inside parenthesis
+// Matches both 'require(..)' and what's inside parenthesis
 var regex = /require\((?:'|")(.*?)(?:'|")\)/g
 
 // Take gulpfile as an argument or use the one in current directory
@@ -15,8 +15,8 @@ require('fs').readFile(gulpfilePath , 'utf8', function(err, data){
     modules.push(match[1])
   }
 
-  var commands = modules.map(function(command){
-    return 'npm install ' + command + ';'
+  var commands = modules.map(function(module){
+    return 'npm install --save-dev ' + module + ';'
   })
 
   console.log('\n\nInstalling modules: \n\t' + modules.join('\n\t') + '\n\n')
