@@ -32,7 +32,16 @@ require('fs').readFile(gulpfile , 'utf8', function(err, data){
 
   // Find all instances of require('…')
   while(match = regex.exec(data)){
-    modules.push(match[1])
+
+    // Add module if it's not the the global registry
+    try {
+      require(match[1])
+    }
+    catch (error) {
+      if(error.code === 'MODULE_NOT_FOUND') {
+        modules.push(match[1])
+      }
+    }
   }
 
   // Loop through the modules and create install commands
