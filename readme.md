@@ -1,6 +1,14 @@
 # Gulpfile-install
 > Gulpfile-install is a command line application that scans your gulpfile.js and install all dependencies.
 
+## Options
+```
+  -h, --help         output usage information
+  -f, --file <path>  Set input gulpfile
+  -S, --save         Save modules as dependency
+  -D, --save-dev     Save modules as dev dependency
+```
+
 ## Example
 If you're starting a new project and want to reuse your previous gulpfile:
 ```
