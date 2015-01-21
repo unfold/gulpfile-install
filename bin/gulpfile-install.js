@@ -1,25 +1,46 @@
 #!/usr/bin/env node
 
+var command = require('commander')
+var saveOption = ''
+var gulpfile = 'gulpfile.js'
+
 // TODO: Optimize regex to match only one group
 // Matches both 'require(..)' and what's inside parenthesis
 var regex = /require\((?:'|")(.*?)(?:'|")\)/g
 
-// Take gulpfile as an argument or use the one in current directory
-var gulpfilePath = process.argv[2] || 'gulpfile.js'
+command
+  .usage('<file …> [options]')
+  .option('-f, --file <path>', 'Set input gulpfile', setGulpfile)
+  .option('-S, --save', 'Save modules as dependency')
+  .option('-D, --save-dev', 'Save modules as dev dependency')
+  .parse(process.argv)
 
+function setGulpfile(file) {
+  gulpfile = file
+}
 
-require('fs').readFile(gulpfilePath , 'utf8', function(err, data){
+if(command.save) {
+  saveOption = '--save'
+}
+else if(command.saveDev) {
+  saveOption = '--save-dev'
+}
+
+// Read gulpfile
+require('fs').readFile(gulpfile , 'utf8', function(err, data){
   var modules = []
 
+  // Find all instances of require('…')
   while(match = regex.exec(data)){
     modules.push(match[1])
   }
 
-  var commands = modules.map(function(module){
-    return 'npm install --save-dev ' + module + ';'
-  })
+  // Loop through the modules and create install commands
+  var installCommands = modules.map(function(module){
+    return 'npm install ' + saveOption + ' ' + module + ';'
+  }).join('')
 
   console.log('\n\nInstalling modules: \n\t' + modules.join('\n\t') + '\n\n')
 
-  require('child_process').exec(commands.join('')).stderr.pipe(process.stderr)
+  require('child_process').exec(installCommands).stderr.pipe(process.stderr)
 })

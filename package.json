@@ -13,5 +13,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Einar Löve <einar.love@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "path": "^0.11.14"
+  },
+  "dependencies": {
+    "commander": "^2.6.0"
+  }
 }
