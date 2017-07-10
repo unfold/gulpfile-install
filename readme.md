@@ -1,5 +1,7 @@
 # Gulpfile-install
-> Gulpfile-install is a command line application that scans your gulpfile.js and installs all dependencies.
+Gulpfile-install is a command line application that scans your gulpfile.js and installs all dependencies.
+
+> This package is unmaintained. If you experience a bug or problem, create a pull request with a fix and a release will be made.
 
 ## Options
 ```
